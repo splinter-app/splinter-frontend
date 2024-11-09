@@ -1,7 +1,6 @@
 {
-  "name": "@minimal/material-kit-react",
-  "author": "minimals.cc",
-  "licence": "MIT",
+  "name": "splinter-ui",
+  "author": "splinter",
   "version": "2.0.0",
   "private": false,
   "type": "module",
@@ -14,15 +13,12 @@
     "fm:check": "prettier --check \"src/**/*.{js,jsx,ts,tsx}\"",
     "fm:fix": "prettier --write \"src/**/*.{js,jsx,ts,tsx}\"",
     "rm:all": "rm -rf node_modules .next out dist build",
-    "re:start": "yarn rm:all && yarn install && yarn dev",
-    "re:build": "yarn rm:all && yarn install && yarn build",
     "re:build-npm": "npm run rm:all && npm install && npm run build",
     "dev:host": "vite --host"
   },
   "engines": {
     "node": "20.x"
   },
-  "packageManager": "yarn@1.22.22",
   "dependencies": {
     "@emotion/cache": "^11.13.1",
     "@emotion/react": "^11.13.3",
@@ -32,7 +28,6 @@
     "@iconify/react": "^5.0.2",
     "@mui/lab": "^5.0.0-alpha.173",
     "@mui/material": "^5.16.7",
-    "apexcharts": "^3.52.0",
     "dayjs": "^1.11.13",
     "history": "^5.3.0",
     "react": "^18.3.1",
@@ -56,7 +51,6 @@
     "eslint-import-resolver-typescript": "^3.6.1",
     "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-jsx-a11y": "^6.9.0",
-    "eslint-plugin-perfectionist": "^2.11.0",
     "eslint-plugin-prettier": "^5.2.1",
     "eslint-plugin-react": "^7.35.0",
     "eslint-plugin-react-hooks": "^4.6.2",
