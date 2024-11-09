@@ -12,7 +12,7 @@ import { varAlpha } from 'src/theme/styles';
 type Props = CardProps & {
   title?: string;
   subheader?: string;
-  list: { value: string; label: string; total: number }[];
+  list: { label: string; total: number }[];
 };
 
 export function DataMetrics({ title, subheader, list, sx, ...other }: Props) {
@@ -21,9 +21,9 @@ export function DataMetrics({ title, subheader, list, sx, ...other }: Props) {
       <CardHeader title={title} subheader={subheader} />
 
       <Box display="grid" gap={2} gridTemplateColumns="repeat(2, 1fr)" sx={{ p: 3 }}>
-        {list.map((site) => (
+        {list.map((metric) => (
           <Box
-            key={site.label}
+            key={metric.label}
             sx={(theme) => ({
               py: 2.5,
               display: 'flex',
@@ -34,17 +34,12 @@ export function DataMetrics({ title, subheader, list, sx, ...other }: Props) {
               border: `solid 1px ${varAlpha(theme.vars.palette.grey['700Channel'], 0.12)}`,
             })}
           >
-            {site.value === 'facebook'}
-            {site.value === 'google'}
-            {site.value === 'linkedin'}
-            {site.value === 'twitter'}
-
             <Typography variant="h6" sx={{ mt: 1 }}>
-              {site.total}
+              {metric.total}
             </Typography>
 
             <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-              {site.label}
+              {metric.label}
             </Typography>
           </Box>
         ))}

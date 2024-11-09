@@ -4,7 +4,6 @@ import type { ColorType } from 'src/theme/core/palette';
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import { useTheme } from '@mui/material/styles';
-
 import { varAlpha, bgGradient } from 'src/theme/styles';
 
 // ----------------------------------------------------------------------
@@ -33,20 +32,19 @@ export function OverviewCard({ icon, title, text, color = 'primary', sx, ...othe
       }}
       {...other}
     >
-      <Box sx={{ width: 48, height: 48, mb: 3 }}>{icon}</Box>
-
       <Box
         sx={{
           display: 'flex',
           flexWrap: 'wrap',
-          alignItems: 'flex-end',
-          justifyContent: 'flex-end',
+          alignItems: 'center',
+          justifyContent: 'space-between',
         }}
       >
-        <Box sx={{ flexGrow: 1, minWidth: 112 }}>
-          <Box sx={{ mb: 1, typography: 'subtitle2' }}>{title}</Box>
+        <Box display="flex">
+          <Box sx={{ width: 40, height: 35, mr: 2 }}>{icon}</Box>
           <Box sx={{ typography: 'h4' }}>{text}</Box>
         </Box>
+        <Box sx={{ typography: 'subtitle2', mr: 2 }}>{title}</Box>
       </Box>
     </Card>
   );

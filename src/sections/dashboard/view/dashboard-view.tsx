@@ -22,9 +22,7 @@ export function DashboardView() {
           <OverviewCard
             title="Pipeline Status"
             text="Deployed"
-            percent={2.6}
             color="success"
-            total={714000}
             icon={<img alt="icon" src="/assets/icons/dashboard/ic-deploy.svg" />}
           />
         </Grid>
@@ -33,8 +31,6 @@ export function DashboardView() {
           <OverviewCard
             title="Source Connector"
             text="S3"
-            percent={-0.1}
-            total={1352831}
             color="warning"
             icon={<img alt="icon" src="/assets/icons/dashboard/ic-source.svg" />}
           />
@@ -44,8 +40,6 @@ export function DashboardView() {
           <OverviewCard
             title="Destination Connector"
             text="Pinecone"
-            percent={2.8}
-            total={1723315}
             color="warning"
             icon={<img alt="icon" src="/assets/icons/dashboard/ic-database.svg" />}
           />
@@ -55,8 +49,6 @@ export function DashboardView() {
           <OverviewCard
             title="Embedding Provider"
             text="OpenAI"
-            percent={3.6}
-            total={234}
             color="error"
             icon={<img alt="icon" src="/assets/icons/dashboard/ic-embedding.svg" />}
           />
@@ -66,10 +58,10 @@ export function DashboardView() {
           <DataMetrics
             title="Data Ingestion"
             list={[
-              { value: 'facebook', label: 'Total Documents', total: 268 },
-              { value: 'google', label: 'Ingested Documents', total: 230 },
-              { value: 'linkedin', label: 'Chunks Written', total: 3419 },
-              { value: 'twitter', label: 'Vectors Written', total: 3012 },
+              { label: 'Total Documents', total: 268 },
+              { label: 'Ingested Documents', total: 230 },
+              { label: 'Chunks Written', total: 3419 },
+              { label: 'Vectors Written', total: 3012 },
             ]}
           />
         </Grid>

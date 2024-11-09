@@ -2,22 +2,16 @@ import type { CardProps } from '@mui/material/Card';
 
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
-import CardHeader from '@mui/material/CardHeader';
-import Typography from '@mui/material/Typography';
-
 import Button from '@mui/material/Button';
-import LoadingButton from '@mui/lab/LoadingButton';
 import TextField from '@mui/material/TextField';
 import { FormControl, FormLabel } from '@mui/material';
 
-import { varAlpha } from 'src/theme/styles';
+// ----------------------------------------------------------------------
 
-const prompt = `<documents> {context} </documents> 
+const PROMPT = `<documents> {context} </documents> 
 The above documents are provided to assist you in answering the following question. Use only the provided documents to generate a response, if the documents do not provide sufficient information to answer the question respond saying there isn't enough information:
 
  <question> {question} </question>`;
-
-// ----------------------------------------------------------------------
 
 type Props = CardProps & {
   title?: string;
@@ -29,8 +23,6 @@ export function QuestionForm({ title, subheader, sx, ...other }: Props) {
     <Card
       sx={{
         backgroundColor: 'common.white',
-        // border: 'solid',
-        // borderWidth: '0.5px',
         ...sx,
       }}
       {...other}
@@ -41,7 +33,7 @@ export function QuestionForm({ title, subheader, sx, ...other }: Props) {
             <FormLabel>Question</FormLabel>
             <TextField multiline rows={3} />
             <FormLabel>Prompt</FormLabel>
-            <TextField multiline rows={7} defaultValue={prompt} />
+            <TextField multiline rows={7} defaultValue={PROMPT} />
             <Button
               size="large"
               type="submit"

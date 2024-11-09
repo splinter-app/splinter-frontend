@@ -62,12 +62,12 @@ function Item({ item, lastItem, ...other }: ItemProps) {
       <TimelineSeparator>
         <TimelineDot
           color={
-            (item.type === 'order1' && 'success') ||
-            (item.type === 'order2' && 'info') ||
-            (item.type === 'order3' && 'info') ||
-            (item.type === 'order4' && 'warning') ||
-            (item.type === 'order5' && 'warning') ||
-            (item.type === 'order8' && 'primary') ||
+            (item.type === 'type1' && 'success') ||
+            (item.type === 'type2' && 'info') ||
+            (item.type === 'type3' && 'info') ||
+            (item.type === 'type4' && 'warning') ||
+            (item.type === 'type5' && 'warning') ||
+            (item.type === 'type8' && 'primary') ||
             'error'
           }
         />

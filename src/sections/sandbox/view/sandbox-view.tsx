@@ -6,6 +6,7 @@ import { DashboardContent } from 'src/layouts/dashboard';
 import { QuestionForm } from '../question-form';
 import { RetrievedContext } from '../retrieved-context';
 import { LLMResponse } from '../llm-response';
+import { OverviewCard } from '../overview-card';
 
 // ----------------------------------------------------------------------
 
@@ -17,6 +18,20 @@ export function SandboxView() {
       </Typography>
 
       <Grid container spacing={3}>
+        <Grid xs={12} sm={6} md={6}>
+          <OverviewCard
+            title="LLM: GPT-4o"
+            text="OpenAI"
+            icon={<img alt="icon" src="/assets/icons/sandbox/ic-openai.svg" />}
+          />
+        </Grid>
+        <Grid xs={12} sm={6} md={5}>
+          <OverviewCard
+            title="Vector DB | k = 5"
+            text="Pinecone"
+            icon={<img alt="icon" src="/assets/icons/sandbox/ic-pinecone.svg" />}
+          />
+        </Grid>
         <Grid xs={12} md={6} lg={6}>
           <QuestionForm />
         </Grid>
