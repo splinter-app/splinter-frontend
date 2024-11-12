@@ -34,6 +34,16 @@ export default defineConfig({
       },
     ],
   },
-  server: { port: PORT, host: true },
+  server: {
+    port: PORT,
+    host: true,
+    proxy: {
+      '/api': {
+        target: 'https://20e7ss4l5b.execute-api.us-east-1.amazonaws.com/prod/sandbox',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, ''),
+      },
+    },
+  },
   preview: { port: PORT, host: true },
 });

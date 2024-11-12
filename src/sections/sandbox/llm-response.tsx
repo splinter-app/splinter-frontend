@@ -10,14 +10,15 @@ import TextField from '@mui/material/TextField';
 type Props = CardProps & {
   title?: string;
   subheader?: string;
+  response: string | undefined;
 };
 
-export function LLMResponse({ title, subheader, sx, ...other }: Props) {
+export function LLMResponse({ title, subheader, response, sx, ...other }: Props) {
   return (
     <Card sx={sx} {...other}>
       <CardHeader title={title} subheader={subheader} />
       <Box display="grid" gap={2} sx={{ p: 3 }}>
-        <TextField multiline rows={8} inputProps={{ readOnly: true }} />
+        <TextField multiline rows={8} inputProps={{ readOnly: true }} value={response} />
       </Box>
     </Card>
   );

@@ -1,10 +1,13 @@
 import type { CardProps } from '@mui/material/Card';
+import { submitRequest } from 'src/services/submitLLMRequest';
+import type { ResponseType } from 'src/types/types';
 
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import { FormControl, FormLabel } from '@mui/material';
+import { Dispatch, SetStateAction, useState } from 'react';
 
 // ----------------------------------------------------------------------
 
@@ -16,9 +19,18 @@ The above documents are provided to assist you in answering the following questi
 type Props = CardProps & {
   title?: string;
   subheader?: string;
+  setResponse: Dispatch<SetStateAction<ResponseType | undefined>>;
 };
 
-export function QuestionForm({ title, subheader, sx, ...other }: Props) {
+export function QuestionForm({ title, subheader, sx, setResponse, ...other }: Props) {
+  const [question, setQuestion] = useState('');
+
+  const handleSubmit = async () => {
+    const response = await submitRequest(question);
+    setResponse(response);
+    console.log(response);
+  };
+
   return (
     <Card
       sx={{
@@ -31,7 +43,14 @@ export function QuestionForm({ title, subheader, sx, ...other }: Props) {
         <FormControl>
           <Box display="grid" gap={2}>
             <FormLabel>Question</FormLabel>
-            <TextField multiline rows={3} />
+            <TextField
+              id="question"
+              multiline
+              rows={3}
+              onChange={(e) => {
+                setQuestion(e.target.value);
+              }}
+            />
             <FormLabel>Prompt</FormLabel>
             <TextField multiline rows={7} defaultValue={PROMPT} />
             <Button
@@ -39,7 +58,7 @@ export function QuestionForm({ title, subheader, sx, ...other }: Props) {
               type="submit"
               color="secondary"
               variant="outlined"
-              // onClick={handleSubmit}
+              onClick={handleSubmit}
             >
               Submit
             </Button>

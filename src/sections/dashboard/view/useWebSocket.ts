@@ -31,7 +31,7 @@ export const useWebSocket = () => {
   const [isConnected, setIsConnected] = useState(false);
 
   useEffect(() => {
-    const websocketUrl = `wss://websocket-url-here/dev`; // Enter websocket url here from CDK deployment
+    const websocketUrl = `wss://a5bipgxpui.execute-api.us-east-2.amazonaws.com/dev`; // Enter websocket url here from CDK deployment
     const websocket = new WebSocket(websocketUrl);
 
     websocket.onopen = () => {
@@ -119,7 +119,6 @@ export const useWebSocket = () => {
             sourceDestinationEmbedding: parsedData.sourceDestinationEmbedding,
           }));
         }
-
       } catch (error) {
         console.error('Error parsing WebSocket message:', error);
       }

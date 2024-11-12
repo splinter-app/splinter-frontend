@@ -1,3 +1,6 @@
+import { useState } from 'react';
+import type { ResponseType } from 'src/types/types';
+
 import Grid from '@mui/material/Unstable_Grid2';
 import Typography from '@mui/material/Typography';
 
@@ -11,6 +14,8 @@ import { OverviewCard } from '../overview-card';
 // ----------------------------------------------------------------------
 
 export function SandboxView() {
+  const [response, setResponse] = useState<ResponseType>();
+
   return (
     <DashboardContent maxWidth="xl">
       <Typography variant="h4" sx={{ mb: { xs: 3, md: 5 } }}>
@@ -33,14 +38,14 @@ export function SandboxView() {
           />
         </Grid>
         <Grid xs={12} md={6} lg={6}>
-          <QuestionForm />
+          <QuestionForm setResponse={setResponse} />
         </Grid>
         <Grid xs={12} md={6} lg={5}>
-          <RetrievedContext title="Retrieved Context" />
+          <RetrievedContext title="Retrieved Context" context={response?.context} />
         </Grid>
 
         <Grid xs={12} md={6} lg={11}>
-          <LLMResponse title="LLM Response" />
+          <LLMResponse title="LLM Response" response={response?.response} />
         </Grid>
       </Grid>
     </DashboardContent>
