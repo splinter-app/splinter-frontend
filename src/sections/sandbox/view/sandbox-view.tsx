@@ -39,14 +39,18 @@ export function SandboxView() {
           />
         </Grid>
         <Grid xs={12} md={6} lg={6}>
-          <QuestionForm setResponse={setResponse} />
+          <QuestionForm setResponse={setResponse} setLoading={setLoading} />
         </Grid>
         <Grid xs={12} md={6} lg={5}>
-          <RetrievedContext title="Retrieved Context" context={response?.context} />
+          <RetrievedContext
+            title="Retrieved Context"
+            context={response?.context}
+            loading={loading}
+          />
         </Grid>
 
         <Grid xs={12} md={6} lg={11}>
-          <LLMResponse title="LLM Response" response={response?.response} />
+          <LLMResponse title="LLM Response" response={response?.response} loading={loading} />
         </Grid>
       </Grid>
     </DashboardContent>

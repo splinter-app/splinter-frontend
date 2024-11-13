@@ -20,14 +20,18 @@ type Props = CardProps & {
   title?: string;
   subheader?: string;
   setResponse: Dispatch<SetStateAction<ResponseType | undefined>>;
+  setLoading: Dispatch<SetStateAction<boolean>>;
 };
 
-export function QuestionForm({ title, subheader, sx, setResponse, ...other }: Props) {
+export function QuestionForm({ title, subheader, sx, setResponse, setLoading, ...other }: Props) {
   const [question, setQuestion] = useState('');
 
   const handleSubmit = async () => {
+    setResponse(undefined);
+    setLoading(true);
     const response = await submitRequest(question);
     setResponse(response);
+    setLoading(false);
     console.log(response);
   };
 
