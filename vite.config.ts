@@ -43,7 +43,7 @@ export default defineConfig(({ mode }) => {
       host: true,
       proxy: {
         '/api': {
-          target: API_URL,
+          target: API_URL + '/sandbox/prompt',
           changeOrigin: true,
           rewrite: (path) => path.replace(/^\/api/, ''),
         },

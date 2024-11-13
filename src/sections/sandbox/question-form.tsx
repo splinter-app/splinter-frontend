@@ -25,14 +25,18 @@ type Props = CardProps & {
 
 export function QuestionForm({ title, subheader, sx, setResponse, setLoading, ...other }: Props) {
   const [question, setQuestion] = useState('');
+  const [questionError, setQuestionError] = useState(false);
 
   const handleSubmit = async () => {
+    if (!question) {
+      setQuestionError(true);
+      return;
+    }
     setResponse(undefined);
     setLoading(true);
     const response = await submitRequest(question);
     setResponse(response);
     setLoading(false);
-    console.log(response);
   };
 
   return (
@@ -53,10 +57,21 @@ export function QuestionForm({ title, subheader, sx, setResponse, setLoading, ..
               rows={3}
               onChange={(e) => {
                 setQuestion(e.target.value);
+                setQuestionError(!e.target.value);
               }}
+              error={questionError}
+              helperText={questionError ? 'Question required' : ''}
+              required
             />
             <FormLabel>Prompt</FormLabel>
-            <TextField multiline rows={7} defaultValue={PROMPT} />
+            <TextField
+              multiline
+              rows={7}
+              defaultValue={PROMPT}
+              InputProps={{
+                readOnly: true,
+              }}
+            />
             <Button
               size="large"
               type="submit"
