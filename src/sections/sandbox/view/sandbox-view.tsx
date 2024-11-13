@@ -15,6 +15,7 @@ import { OverviewCard } from '../overview-card';
 
 export function SandboxView() {
   const [response, setResponse] = useState<ResponseType>();
+  const [loading, setLoading] = useState(false);
 
   return (
     <DashboardContent maxWidth="xl">

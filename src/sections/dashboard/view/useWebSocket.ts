@@ -31,7 +31,7 @@ export const useWebSocket = () => {
   const [isConnected, setIsConnected] = useState(false);
 
   useEffect(() => {
-    const websocketUrl = `wss://a5bipgxpui.execute-api.us-east-2.amazonaws.com/dev`; // Enter websocket url here from CDK deployment
+    const websocketUrl = import.meta.env.VITE_WEBHOOK_URL; // Enter websocket url here from CDK deployment
     const websocket = new WebSocket(websocketUrl);
 
     websocket.onopen = () => {
